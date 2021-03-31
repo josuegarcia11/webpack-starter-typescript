@@ -42,11 +42,37 @@ usuarioRef
 .then( () => console.log('Borrado') )
 .catch( e => console.log ('error', e ));
 
-//Select * from usuario;
-usuarioRef
-.onSnapshot( snap => {
+/*
+     Select * from usuario;
+       where activo = true
+*/
 
-retornaDocumentos( snap );
+usuarioRef.where('activo','==', true).get().then( retornaDocumentos );
 
-usuarioRef.get().then( retornaDocumentos);
-})
+/*
+     Select * from usuario;
+       where salario > 1800
+*/
+
+usuarioRef.where('salario','>', 1800 )
+           .get().then( retornaDocumentos);
+
+/*
+     Select * from usuario;
+      -- where salario > 1800 and salario < 2300
+      where salario between 1800 and 2300
+*/
+
+usuarioRef.where('salario','>=', 1800 )
+          .where('salario', '<=', 2300 )
+           .get().then( retornaDocumentos);
+
+/*
+     Select * from usuario;
+      where salario > 1800
+      and activo == true
+*/
+
+usuarioRef.where('salario','>=', 1800 )
+          .where('activo', '==', true )
+           .get().then( retornaDocumentos);
