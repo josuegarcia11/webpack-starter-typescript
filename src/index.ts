@@ -1,4 +1,5 @@
 import db from './Firebase/Config';
+import { retornaDocumentos } from './helpers/mostrar-documentos';
 
 
 //Para crear tabla para un usuario
@@ -45,14 +46,7 @@ usuarioRef
 usuarioRef
 .onSnapshot( snap => {
 
-    const usuarios: any[] = [];
+retornaDocumentos( snap );
 
-    snap.forEach( snapHijo => {
-        usuarios.push({
-            id: snapHijo.id,
-            ...snapHijo.data()
-
-        });
-    });
-    console.log(usuarios);
+usuarioRef.get().then( retornaDocumentos);
 })
