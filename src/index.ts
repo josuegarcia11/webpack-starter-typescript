@@ -8,29 +8,35 @@ const usuario = {
     fechaNaci: 0
 }
 
-// insert into usuarios ....
+const usuarioRef = db.collection('usuarios');
 
-//db.collection('usuarios')
-//.add(usuario)
-//.then( docRef => {
-//    console.log( docRef )
-//})
-//.catch( e => console.log ('error', e ))
+// Insertar
+db.collection('usuarios')
+.add(usuario)
+.then( docRef => {
+    console.log( docRef )
+})
+.catch( e => console.log ('error', e ))
 
-
-// update usuarios set activo = false where....
-//usuariosRef
-//.doc('G5TY0KJyhRKkm4T5yymC')
-//.update({
-//    activo: true
-//});
-
+//update usuarios set activo = false wherer....
+usuarioRef
+.doc('G5TY0KJyhRKkm4T5yymC')
+.update({
+    activo: true
+});
 //Destructivo
-//usuariosRef
-//.doc('G5TY0KJyhRKkm4T5yymC')
-//.set({
-//    activo: false,
-//    adad: 44,
-//    casado: true,
-//    id: 123
-//});
+usuarioRef
+.doc('G5TY0KJyhRKkm4T5yymC')
+.set({
+    activo: true,
+    edad: 44,
+    casado: true,
+    id: 123,
+});
+
+//Borrar
+usuarioRef
+.doc('wYyWCKZSpjdJesgM7LjH')
+.delete()
+.then( () => console.log('Borrado') )
+.catch( e => console.log ('error', e ));
