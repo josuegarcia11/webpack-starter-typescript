@@ -16,3 +16,21 @@ const usuario = {
 //    console.log( docRef )
 //})
 //.catch( e => console.log ('error', e ))
+
+
+// update usuarios set activo = false where....
+//usuariosRef
+//.doc('G5TY0KJyhRKkm4T5yymC')
+//.update({
+//    activo: true
+//});
+
+//Destructivo
+//usuariosRef
+//.doc('G5TY0KJyhRKkm4T5yymC')
+//.set({
+//    activo: false,
+//    adad: 44,
+//    casado: true,
+//    id: 123
+//});
